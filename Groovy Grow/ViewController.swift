@@ -35,6 +35,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 //        get market data
         
 //        for market in markets ... get data and draw pin
+        let address = "1 Infinite Loop, Cupertino, CA 95014"
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            
+            // Use your location
+        }
         
         let pin = Annotation(title:"Dojo", subtitle: "Josh is cool", coordinate: myLocation)
         mapView.addAnnotation(pin)
